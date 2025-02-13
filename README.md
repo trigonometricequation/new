@@ -1,0 +1,635 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaContent AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary: #1A3A3A;
+      --secondary: #0A0A0A;
+      --accent: #00FFD1;
+      --text: #F5F5F5;
+      --background: #0A0A0A;
+    }
+
+    [data-theme="light"] {
+      --primary: #E0F7FA;
+      --secondary: #FFFFFF;
+      --accent: #00BFA5;
+      --text: #0A0A0A;
+      --background: #FFFFFF;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeIn 0.5s ease-in-out, slideInFromTop 0.5s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      animation: fadeIn 0.8s ease-in-out, slideInFromBottom 0.5s ease-in-out;
+    }
+
+    .hero .cta {
+      background-color: var(--accent);
+      color: var(--secondary);
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: fadeIn 1s ease-in-out, pulse 1s infinite;
+    }
+
+    .hero .cta:hover {
+      background-color: #00CCAA;
+      transform: scale(1.05);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      text-align: center;
+      background-color: var(--background);
+    }
+
+    .services h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .service {
+      background-color: var(--primary);
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 0.5s ease-in-out;
+    }
+
+    .service:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .service h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      font-size: 1rem;
+      color: #CCCCCC;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+      text-align: center;
+      background-color: var(--primary);
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact input, .contact textarea {
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid var(--accent);
+      background-color: var(--secondary);
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .contact input::placeholder, .contact textarea::placeholder {
+      color: #CCCCCC;
+    }
+
+    .contact .cta {
+      background-color: var(--accent);
+      color: var(--secondary);
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact .cta:hover {
+      background-color: #00CCAA;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary);
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 80px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    footer .social-icons {
+      margin-top: 10px;
+    }
+
+    footer .social-icons a {
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    footer .social-icons a:hover {
+      color: var(--accent);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInFromTop {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInFromBottom {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Dark/Light Mode Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      color: var(--secondary);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .theme-toggle:hover {
+      background-color: #00CCAA;
+    }
+  
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .contact-info {
+      padding-right: 30px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .info-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .info-item h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin: 10px 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .social-links a {
+      padding: 8px 15px;
+      border-radius: 5px;
+      border: 1px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      background: var(--secondary);
+    }
+
+    .form-group textarea {
+      height: 120px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Keep all original styles below */
+    /* Original contact styles - KEEP THESE AS FALLBACK */
+    .contact {
+      padding: 80px 0;
+      text-align: center;
+      background-color: var(--primary);
+    }
+    /* ... rest of existing styles ... */
+  .contact {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.contact-info {
+  padding-right: 40px;
+}
+
+.contact h2 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.info-item h4 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.info-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.contact-form {
+  background: var(--secondary);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 80px 15px 45px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group textarea {
+  height: 120px;
+  padding: 15px 20px 15px 45px;
+}
+
+.form-group label {
+  position: absolute;
+  left: 45px;
+  top: 18px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-25px);
+  font-size: 0.8rem;
+  opacity: 1;
+  color: var(--accent);
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.cta {
+  background: linear-gradient(135deg, var(--accent), #00ccaa);
+  padding: 16px 40px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.cta .arrow {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.cta:hover .arrow {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.social-icon {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info {
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+  <!-- Dark/Light Mode Toggle -->
+  
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>AI-Powered Content Creation That Works While You Sleep</h1>
+      <p>From blogs to ads, we generate high-quality content tailored to your brand—fast, efficient, and scalable.</p>
+      <a href="#" class="cta">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service">
+          <h3>Web Development</h3>
+          <p>Build modern, responsive, and high-performance websites.</p>
+        </div>
+        <div class="service">
+          <h3>SMMA (Social Media Marketing)</h3>
+          <p>Grow your brand with data-driven social media strategies.</p>
+        </div>
+        <div class="service">
+          <h3>AI Sales Call Receiver</h3>
+          <p>Automate your sales calls with AI-powered call handling.</p>
+        </div>
+        <div class="service">
+          <h3>Blog Post Writer</h3>
+          <p>Generate SEO-optimized blog posts in minutes.</p>
+        </div>
+        <div class="service">
+          <h3>Ad Copy Generator</h3>
+          <p>Create high-converting ad copy for your campaigns.</p>
+        </div>
+        <div class="service">
+          <h3>Email Marketing</h3>
+          <p>Design and automate email campaigns that convert.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <!-- Contact Section -->
+<section class="contact">
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2>Transform Your Content Strategy</h2>
+        <p class="subtitle">Let's discuss how AI can revolutionize your content creation process.</p>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <h4>Our Office</h4>
+            <p>123 AI Innovation Drive<br>Tech Valley, CA 94016</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <h4>24/7 Support</h4>
+            <p>support@nexacontent.ai</p>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder=" " required="">
+          <label>Your Name</label>
+          <span class="input-icon">👤</span>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" placeholder=" " required="">
+          <label>Email Address</label>
+          <span class="input-icon">✉️</span>
+        </div>
+        
+        <div class="form-group">
+          <textarea placeholder=" " rows="4" required="" style="width: 320px; height: 128px;"></textarea>
+          <label>How can we help you?</label>
+          <span class="input-icon">💡</span>
+        </div>
+
+        <button type="submit" class="cta">
+          Send Message
+          <span class="arrow">→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2024 NexaContent AI. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body></html>
